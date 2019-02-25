@@ -1,46 +1,33 @@
 {
-  "name": "react-ssr-example",
-  "version": "1.0.0",
-  "description": "An example React app that integrates with react-ssr.",
-  "main": "index.js",
-  "scripts": {
-    "start": "",
-    "build": "",
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/oayres/react-ssr-examples.git"
-  },
-  "keywords": [
-    "react",
-    "server-side",
-    "rendering",
-    "ssr",
-    "react-ssr"
-  ],
-  "author": "Owen Ayres",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/oayres/react-ssr-examples/issues"
-  },
-  "homepage": "https://github.com/oayres/react-ssr-examples#readme",
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "http": "^0.0.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-helmet": "^5.2.0",
-    "react-router": "^4.2.0",
-    "react-router-config": "^1.0.0-beta.4",
+    "fs-extra": "^7.0.1",
+    "react": "^16.3.2",
+    "react-ckeditor-component": "^1.0.7",
+    "react-dom": "^16.3.2",
     "react-router-dom": "^4.2.2",
-    "react-ssr": "^0.4.0"
+    "react-scripts": "1.1.4",
+    "react-table": "^6.8.6",
+    "react-toggle": "^4.0.2",
+    "reactstrap": "^6.1.0",
+    "reselect": "^3.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "watch": "node watch.js",
+    "build": "react-scripts build && node build.js",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "client": "npm start",
+    "dev": "concurrently --kill-others-on-fail \"pm2 start development.json\" \"npm run client\"",
+    "w": "concurrently --kill-others-on-fail \"pm2 start development.json\" \"npm run watch\""
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-add-react-displayname": "^0.0.5",
-    "babel-plugin-react-ssr": "^0.1.2",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "jest": "^22.4.2",
-    "webpack": "^4.0.0"
-  }
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "concurrently": "^3.5.0"
+  },
+  "proxy": "http://localhost:5000"
 }

@@ -1,16 +1,15 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import BrowserRouter from 'react-router-dom/BrowserRouter'
-import { renderRoutes } from 'react-router-config'
-import routes from './routes'
-import './styles/styles.scss' // global styles...
+import React, {Component} from 'react';
 
-const AppRouter = () => {
-  return (
-    <BrowserRouter>
-      {renderRoutes(routes)}
-    </BrowserRouter>
-  )
+export default class App extends Component {
+
+	constructor(props) {
+	    super(props)
+	}
+
+	render() {
+	    const element = (<div>Text from Element</div>)
+	    return (<div className="comptext">
+	      {this.props.displaytext}
+	    </div>)
+	  }
 }
-
-ReactDOM.render(<AppRouter />, document.getElementById('root'))

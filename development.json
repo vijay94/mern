@@ -1,0 +1,15 @@
+{
+	"apps" : [{
+		"name": "PWA",
+		"script": "server/bin/www",
+		"watch": "./server/",
+		"watch_options": {
+		    "followSymlinks": false,
+		    "usePolling": true
+		},
+		"env": {
+	        "NODE_ENV": "development",
+	        "PORT": 3009
+	    }
+	}]
+}
