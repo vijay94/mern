@@ -1,3 +1,7 @@
+/*
+	Used to move files from default build directory to client directory
+*/
+
 process.env.NODE_ENV = 'production';
 
 const fs = require('fs-extra');

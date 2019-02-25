@@ -1,3 +1,7 @@
+/*
+  Used to watch for the changes under src directory and build for development.
+*/
+
 process.env.NODE_ENV = 'development';
 
 const fs = require('fs-extra');
@@ -5,14 +9,11 @@ const paths = require('react-scripts/config/paths');
 const webpack = require('webpack');
 const config = require('react-scripts/config/webpack.config.dev.js');
 
-// removes react-dev-utils/webpackHotDevClient.js at first in the array
 config.entry.shift();
 config.entry = config.entry.filter(
   entry => !entry.includes('webpackHotDevClient')
 );
-// config.output.publicPath = ""
-// config.output.filename = './public/static/js/bundle.js';
-// config.output.chunkFilename = './public/static/js/[name].chunk.js'
+
 paths.ouputIndex = "./index.html";
 paths.ouputPublicIndex = "./client/index.html";
 paths.appBuild = "./client/";
