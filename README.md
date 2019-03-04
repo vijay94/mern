@@ -16,7 +16,8 @@ A MERN stack starter project - M(Mysql or Mongo), E(Express), R(React), N(Node)
 	```
 	npm run watch
 	```
-
+- Configure your port in development.json, By default it is 3009
+	
 ## Version
 
 1.0
