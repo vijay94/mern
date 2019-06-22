@@ -1,32 +1,50 @@
-const express = require('express'),
+const createError = require('http-errors'),
+	express = require('express'),
 	path = require('path'),
-	request = require('request'),
-    router = express.Router();
+	cookieParser = require('cookie-parser'),
+	logger = require('morgan');
+
+// require('dotenv').config({path : path.join(__dirname, '.env')});
+// require('dotenv').config({path : path.join(__dirname, '.env.url-only')});
 
 var app = express();
 
-// view engine setup
+var distDir = '../dist';
 
-app.use('/static', express.static(path.join(__dirname, '../client/static')))
+app.use(logger(':date[iso] ":method :url HTTP/:http-version" :status :response-time ms ":referrer" ":user-agent"'));
+app.use(cookieParser());
 
-app.set('views', path.join(__dirname, '../client/'));
 
+app.set('views', path.join(__dirname, distDir));
 app.engine('html', require('ejs').renderFile);
 
 app.set('view engine', 'html');
 
-app.use(router);
-
-/*************************  ROUTING FUNCTIONALITIES *****************************/
-app.get('/*', (req, res, next) => {
-	res.render('index')
+app.use(/[\/]/,(req, res) => {
+	res.render("index");
 });
+
+app.use(express.static(path.join(__dirname, distDir)))
+
+app.use(/^((?!(api)).)*/, (req, res) => {
+	res.render("index");
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-	var err = new Error('Not Found');
-	err.status = 404;
-	next(err);
+  next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  console.error(err);
+  // render the error page
+  res.status(err.status || 500);
+  res.status(500).send({ status : 500, message : "Internal Server Error" });
 });
 
 module.exports = app;

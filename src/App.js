@@ -7,9 +7,8 @@ export default class App extends Component {
 	}
 
 	render() {
-	    const element = (<div>Text from Element</div>)
 	    return (<div className="comptext">
-	      {this.props.displaytext}
+	      <p>Hello React</p>
 	    </div>)
 	  }
 }
