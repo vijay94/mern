@@ -13,7 +13,7 @@
     "debug": "~2.6.9",
     "ejs": "^2.6.1",
     "express": "~4.15.5",
-    "express-fileupload": "^0.4.0",
+    "express-fileupload": "^1.1.9",
     "morgan": "^1.9.1",
     "serve-favicon": "~2.4.5",
     "website-scraper": "^3.3.5"
